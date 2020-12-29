@@ -5,16 +5,21 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float exposedVar = 5;
-    float notExposedVar = 5;
 
     [SerializeField]
     float thisCanBeSeen;
     [Range(0, 100)]
     public float thisHasARange;
 
+    public GameObject badGuy;
+
     void Start()
     {
-        Debug.Log("This is the value " + exposedVar);
+        badGuy = GameObject.FindGameObjectWithTag("BadGuy");
+        if (badGuy != null)
+        {
+           Debug.Log(badGuy.transform.position);
+        }
     }
 
     // Update is called once per frame
@@ -22,11 +27,12 @@ public class PlayerMovement : MonoBehaviour
     {
       if (Input.GetKey(KeyCode.W))
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (10*Time.deltaTime));
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - (10*Time.deltaTime));
         }
+        
     }
 }
