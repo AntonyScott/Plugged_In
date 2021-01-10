@@ -6,20 +6,16 @@ public class EnemyController : MonoBehaviour
 {
     public float enemyHealth = 50;
     public float damage;
+    Animator animator;
 
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        animator = GetComponent<Animator>();
     }
     void TakeDamage(float damageTaken)
     {
         enemyHealth -= damageTaken;
+        animator.SetTrigger("Hit");
         if(enemyHealth <= 0)
         {
             Destroy(this.gameObject);
@@ -33,4 +29,5 @@ public class EnemyController : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
 }

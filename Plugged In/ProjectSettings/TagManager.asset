@@ -7,6 +7,7 @@ TagManager:
   - BadGuy
   - Enemy
   - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX

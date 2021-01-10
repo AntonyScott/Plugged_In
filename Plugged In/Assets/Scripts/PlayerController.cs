@@ -5,20 +5,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public float speed;
     private Rigidbody rb;
 
-    public float speed;
+    float movementX;
+    float movementY;
+
     public float bulletSpeed;
     public float playerHealth = 100;
     public float curHealth;
 
     public float myDamage = 10;
 
-    float movementX;
-    float movementY;
-
     public GameObject bullet;
     public Transform firePoint;
+
+    float fireTimer = 1;
+    public float fireTimerReset = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,13 @@ public class PlayerController : MonoBehaviour
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
-
+    private void Update()
+    {
+        if (fireTimer >= 0)
+        {
+            fireTimer -= Time.deltaTime;
+        }
+    }
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0, movementY);
@@ -64,9 +73,13 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue input)
     {
-       GameObject myBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
-        myBullet.GetComponent<Rigidbody>().AddForce(firePoint.transform.forward * bulletSpeed);
-        myBullet.GetComponent<BulletController>().damage = myDamage;
+        if (fireTimer <= 0)
+        {
+            GameObject myBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+            myBullet.GetComponent<Rigidbody>().AddForce(firePoint.transform.forward * bulletSpeed);
+            myBullet.GetComponent<BulletController>().damage = myDamage;
+            fireTimer = fireTimerReset;
+        }
     }
     
     void OnJump(InputValue input)
