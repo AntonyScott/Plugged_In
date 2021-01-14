@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         if (curHealth <= 0)
         {
             Destroy(this.gameObject);
+            Application.Quit();
         }
     }
         private void OnCollisionEnter(Collision colllision)
@@ -102,6 +103,12 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(10);
             print("You are taking damage!!");
+        }
+        if (colllision.transform.tag == "EnemyBullet")
+        {
+            TakeDamage(10);
+            print("You are taking damage!!");
+            Destroy(colllision.gameObject);
         }
     }
 }
