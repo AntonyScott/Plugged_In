@@ -77,6 +77,7 @@ public class EnemyController : MonoBehaviour
         GameObject myBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
             myBullet.GetComponent<Rigidbody>().AddForce(firePoint.transform.forward* bulletSpeed);
     myBullet.GetComponent<BulletController>().damage = myDamage;
+        FindObjectOfType<AudioManager>().Play("Shoot");
     }
 
 }

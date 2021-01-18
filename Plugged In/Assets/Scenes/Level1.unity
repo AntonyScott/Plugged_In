@@ -308,6 +308,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &146338865
@@ -501,6 +502,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171616679}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &289530072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 289530074}
+  - component: {fileID: 289530073}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &289530073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289530072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6421e3837ce79444da23117d4d95b18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Jump
+    clip: {fileID: 8300000, guid: 13a19b61d8a189e4dbdd5c98ccab290a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: d4dbf88c867e23b41a024cb27733fa13, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: d748595df0a31e34e983290a751a3173, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &289530074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289530072}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &316733322
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +654,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &331568793
@@ -891,16 +955,24 @@ PrefabInstance:
       value: Ranged Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.673683
       objectReference: {fileID: 0}
     - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9324219
+      value: 1.548
       objectReference: {fileID: 0}
     - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.5738338
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -913,14 +985,6 @@ PrefabInstance:
     - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7098107983680039255, guid: cde756d0d391dcd4d950a7f4d7998fa8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1072,8 +1136,8 @@ GameObject:
   m_Component:
   - component: {fileID: 877901191}
   - component: {fileID: 877901190}
-  - component: {fileID: 877901189}
   - component: {fileID: 877901192}
+  - component: {fileID: 877901189}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1584,6 +1648,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &1183062660
@@ -2276,6 +2341,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1962823202

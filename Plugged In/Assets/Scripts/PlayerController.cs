@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
             myBullet.GetComponent<Rigidbody>().AddForce(firePoint.transform.forward * bulletSpeed);
             myBullet.GetComponent<BulletController>().damage = myDamage;
             fireTimer = fireTimerReset;
+            FindObjectOfType<AudioManager>().Play("Shoot");
         }
     }
     
