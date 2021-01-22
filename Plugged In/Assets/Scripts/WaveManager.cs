@@ -39,9 +39,9 @@ public class WaveManager : MonoBehaviour
                 SceneManager.LoadScene("BossArena");
             }
         }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        //if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
