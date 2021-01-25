@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (player != null && isRanged == false && enemyHealth < 0)
+        if (player != null && isRanged == false && enemyHealth > 0)
         {
             navAI.SetDestination(player.transform.position);
         }

@@ -36,7 +36,7 @@ public class WaveManager : MonoBehaviour
             else
             {
                 print("You win, NICE!");
-                SceneManager.LoadScene("BossArena");
+                SceneManager.LoadScene("BossFight", LoadSceneMode.Single);
             }
         }
         //if (Input.GetKeyDown(KeyCode.KeypadEnter))

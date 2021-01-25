@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 419401784385817388}
   - component: {fileID: 419401784385817391}
   - component: {fileID: 419401784385817390}
+  - component: {fileID: 247752524}
   m_Layer: 0
   m_Name: Speed Power-Up
   m_TagString: SpeedPowerup
@@ -598,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 419401784385817385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.3106, y: 1.2263, z: 4.2464}
-  m_LocalScale: {x: 1.2459816, y: 1.2459816, z: 1.2459816}
+  m_LocalScale: {x: 1.2170749, y: 1.2170752, z: 1.2170752}
   m_Children:
   - {fileID: 419401782679830305}
   - {fileID: 419401783489728009}
@@ -671,3 +672,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &247752524
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419401784385817385}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f75a4ea0def32e4e95b08c08f6ed826, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

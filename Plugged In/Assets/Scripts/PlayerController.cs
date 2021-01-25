@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -111,6 +112,7 @@ public class PlayerController : MonoBehaviour
     
     void OnJump(InputValue input)
     {
+        SceneManager.LoadScene("BossFight", LoadSceneMode.Single);
         rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
         FindObjectOfType<AudioManager>().Play("Jump");
         Debug.Log("Jump!!!");
