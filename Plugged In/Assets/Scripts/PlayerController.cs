@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
     public float myDamage = 10;
 
     public GameObject bullet;
-    public Transform firePoint;
+    public Transform firePoint1;
+    public Transform firePoint2;
 
     float fireTimer = 1;
     public float fireTimerReset = 0.5f;
@@ -97,9 +98,12 @@ public class PlayerController : MonoBehaviour
     {
         if (fireTimer <= 0)
         {
-            GameObject myBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
-            myBullet.GetComponent<Rigidbody>().AddForce(firePoint.transform.forward * bulletSpeed);
-            myBullet.GetComponent<BulletController>().damage = myDamage;
+            GameObject myBullet1 = Instantiate(bullet, firePoint1.position, Quaternion.identity);
+            myBullet1.GetComponent<Rigidbody>().AddForce(firePoint1.transform.forward * bulletSpeed);
+            myBullet1.GetComponent<BulletController>().damage = myDamage;
+            GameObject myBullet2 = Instantiate(bullet, firePoint2.position, Quaternion.identity);
+            myBullet2.GetComponent<Rigidbody>().AddForce(firePoint2.transform.forward * bulletSpeed);
+            myBullet2.GetComponent<BulletController>().damage = myDamage;
             fireTimer = fireTimerReset;
             FindObjectOfType<AudioManager>().Play("playerShoot");
         }

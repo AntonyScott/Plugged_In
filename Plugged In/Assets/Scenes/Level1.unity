@@ -1341,7 +1341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877901188}
   m_LocalRotation: {x: 0.28041542, y: 0, z: 0, w: 0.95987874}
-  m_LocalPosition: {x: 0.12, y: 10.73, z: -11.13}
+  m_LocalPosition: {x: 0.12, y: 11.412, z: -11.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 7098107983680039251, guid: 4251e0136f7a2ce448b84c802216998c, type: 3}
+  - {fileID: 8738797080546352791, guid: 5b62250c8851ffb468a5161feb6dd921, type: 3}
   spawnPoints:
   - {fileID: 943752333}
   - {fileID: 1081143546}
@@ -1992,7 +1992,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476197914}
   m_LocalRotation: {x: 0.28041542, y: 0, z: 0, w: 0.95987874}
-  m_LocalPosition: {x: 0.12, y: 10.73, z: -11.13}
+  m_LocalPosition: {x: 0.12, y: 11.412, z: -11.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 401493630}
@@ -2677,6 +2677,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986649846}
   m_CullTransparentMesh: 1
+--- !u!4 &2020439589 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4560417994280618705, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
+  m_PrefabInstance: {fileID: 4560417993471911878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2050033342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2761,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &2092744149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 713801641289483671, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
+  m_PrefabInstance: {fileID: 4560417993471911878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2106349870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2868,7 +2878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560417992809015432, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73
+      value: 1.412
       objectReference: {fileID: 0}
     - target: {fileID: 4560417992809015432, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2907,6 +2917,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4560417992809015446, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
+      propertyPath: firePoint1
+      value: 
+      objectReference: {fileID: 2020439589}
+    - target: {fileID: 4560417992809015446, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
+      propertyPath: firePoint2
+      value: 
+      objectReference: {fileID: 2092744149}
+    - target: {fileID: 4560417992809015446, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 1986649848}
@@ -2914,9 +2932,5 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1598186684}
-    - target: {fileID: 4560417992809015446, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
-      propertyPath: playerHealth
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 966753e6843002f49bf17a96b69d80d0, type: 3}
