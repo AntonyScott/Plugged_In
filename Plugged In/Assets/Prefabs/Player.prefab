@@ -2499,13 +2499,14 @@ MonoBehaviour:
   bulletSpeed: 650
   playerHealth: 100
   curHealth: 0
-  myDamage: 25
+  myDamage: 50
   bullet: {fileID: 5525620609687049990, guid: 9621ce2281fbe6d4bb7cfeb9aa81f973, type: 3}
   firePoint1: {fileID: 0}
   firePoint2: {fileID: 0}
   fireTimerReset: 0.3
   healthText: {fileID: 0}
   healthSlider: {fileID: 0}
+  isGrounded: 1
 --- !u!1 &4560417993803313503
 GameObject:
   m_ObjectHideFlags: 0

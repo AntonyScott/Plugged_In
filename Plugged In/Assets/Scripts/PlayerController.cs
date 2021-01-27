@@ -35,6 +35,29 @@ public class PlayerController : MonoBehaviour
     public Text healthText;
     public Slider healthSlider;
 
+    public bool isGrounded = true;
+
+    // called first
+    void OnEnable()
+    {
+        //Debug.Log("OnEnable called");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Debug.Log("OnSceneLoaded: " + scene.name);
+        if (scene.name == "BossScene")
+        {
+            transform.position = new Vector3(0, 1, 0);
+        }
+        //Debug.Log(mode);
+    }
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +67,7 @@ public class PlayerController : MonoBehaviour
         //UI Update
         healthText.text = curHealth.ToString();
         healthSlider.value = curHealth;
+        DontDestroyOnLoad(this.gameObject);
     }
     void OnMove(InputValue inputValue)
     {
@@ -64,7 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 movement = new Vector3(movementX, 0, movementY);
 
-        if(speedPowerUp == false)
+        if (speedPowerUp == false)
         {
             rb.AddForce(movement * speed);
         }
@@ -75,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log(rb.velocity);
 
-        if(rb.velocity.x > posMaxSpeed)
+        if (rb.velocity.x > posMaxSpeed)
         {
             rb.velocity = new Vector3(10, rb.velocity.y, rb.velocity.z);
         }
@@ -109,13 +133,14 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("playerShoot");
         }
     }
-    
+
     void OnJump(InputValue input)
     {
-        SceneManager.LoadScene("BossFight", LoadSceneMode.Single);
-        rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+        SceneManager.LoadScene("BossScene", LoadSceneMode.Single);
+        //rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
         FindObjectOfType<AudioManager>().Play("Jump");
-        Debug.Log("Jump!!!");
+        //isGrounded = false;
+        //Debug.Log("Jump!!!");
     }
     void TakeDamage(float damageTaken)
     {
@@ -128,9 +153,9 @@ public class PlayerController : MonoBehaviour
             Application.Quit();
         }
     }
-        private void OnCollisionEnter(Collision colllision)
+    private void OnCollisionEnter(Collision colllision)
     {
-        if(colllision.transform.tag == "Enemy")
+        if (colllision.transform.tag == "Enemy")
         {
             TakeDamage(10);
             print("You are taking damage!!");
@@ -142,17 +167,19 @@ public class PlayerController : MonoBehaviour
             Destroy(colllision.gameObject);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "SpeedPowerup")
+        if (other.tag == "SpeedPowerup")
         {
             speedPowerUp = true;
             Invoke("NormalSpeed", 15);
             negMaxSpeed = -25;
             posMaxSpeed = 25;
+            FindObjectOfType<AudioManager>().Play("speedPowerUp");
             Destroy(other.gameObject);
         }
-    }                                                                                                                                                                                                                          
+    }
 
     void NormalSpeed()
     {

@@ -9,6 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 74af805fa16b14c45b10949d4facc449
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 4b96101c6f819244e9183143e4c5477e
-  m_configObjects: {}
+    path: Assets/Scenes/WaveScene.unity
+    guid: acc66e880462a9f4f9432fb1fa1d7d57
+  - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: 7c6b0c6abb009d241a42813351b46090
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: d59befa771d97504d871cd99a823695f, type: 2}

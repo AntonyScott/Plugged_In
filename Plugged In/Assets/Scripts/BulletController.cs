@@ -6,6 +6,7 @@ public class BulletController : MonoBehaviour
 {
     public float damage;
     GameObject player;
+    public bool bossBullet;
 
     void Start()
     {
@@ -14,8 +15,16 @@ public class BulletController : MonoBehaviour
     }
     void update()
     {
-        Vector3 target = Vector3.Lerp(transform.position, player.transform.position, 0.05f);
-        transform.position = new Vector3(transform.position.x, target.y, transform.position.z);
+        if (!bossBullet)
+        {
+            Vector3 target = Vector3.Lerp(transform.position, player.transform.position, 0.05f);
+            transform.position = new Vector3(transform.position.x, target.y, transform.position.z);
+        }
+        else
+        {
+            Vector3 target = Vector3.Lerp(transform.position, player.transform.position, 0.5f);
+            GetComponent<Rigidbody>().AddForce((target - transform.position) * 10);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

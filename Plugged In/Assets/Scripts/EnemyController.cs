@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     public float bulletSpeed = 100;
     //power up variables
     public GameObject[] powerup;
+    public bool runAway = true;
 
 
     void Start()
@@ -49,6 +50,7 @@ public class EnemyController : MonoBehaviour
             {
                 Vector3 position = new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10),transform.position.y, Random.Range(transform.position.x - 10, transform.position.x + 10));
                 navAI.SetDestination(position);
+                runAway = false;
             }
         }
     }
@@ -68,7 +70,7 @@ public class EnemyController : MonoBehaviour
             navAI.enabled = false;
             rb.constraints = RigidbodyConstraints.None;
             rb.useGravity = false;
-            rb.AddForce((transform.position = bulPosition) * 2, ForceMode.Impulse);
+            //rb.AddForce((transform.position = bulPosition) * 2, ForceMode.Impulse);
             FindObjectOfType<AudioManager>().Play("Hit");
             Destroy(this.gameObject, 3);
         }

@@ -11,6 +11,8 @@ TagManager:
   - EnemyBullet
   - Ground
   - SpeedPowerup
+  - FlashbangPowerup
+  - Boss
   layers:
   - Default
   - TransparentFX
