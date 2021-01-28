@@ -22,7 +22,8 @@ public class EnemyController : MonoBehaviour
     public GameObject[] powerup;
     public bool runAway = true;
 
-
+    public bool enemyCharge = false;
+    bool haveCharged = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,10 +38,22 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        //melee
         if (player != null && isRanged == false && enemyHealth > 0)
         {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if(distance <= 8 && haveCharged == false && enemyCharge == true)
+            {
+                //charge player
+                Charge();
+                haveCharged = true;
+            }
             navAI.SetDestination(player.transform.position);
         }
+
+
+
+        //ranged
         if (player != null && isRanged == true)
         {
             Vector3 targetPosition = new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
@@ -48,6 +61,7 @@ public class EnemyController : MonoBehaviour
 
             if (Vector3.Distance(transform.position,player.transform.position) < 3)
             {
+                //runaway
                 Vector3 position = new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10),transform.position.y, Random.Range(transform.position.x - 10, transform.position.x + 10));
                 navAI.SetDestination(position);
                 runAway = false;
@@ -62,9 +76,13 @@ public class EnemyController : MonoBehaviour
         {
             //powerup code
             int chance = Random.Range(0, 100);
-            if (chance <= 25)
+            if (chance <= 50)
             {
                 Instantiate(powerup[0], new Vector3(transform.position.x,1,transform.position.z), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(powerup[1], new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
             }
             //death code
             navAI.enabled = false;
@@ -90,6 +108,21 @@ public class EnemyController : MonoBehaviour
             myBullet.GetComponent<Rigidbody>().AddForce(firePoint.transform.forward* bulletSpeed);
     myBullet.GetComponent<BulletController>().damage = myDamage;
         FindObjectOfType<AudioManager>().Play("enemyShoot");
+    }
+
+    void Charge()
+    {
+        navAI.enabled = false;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce((player.transform.position = transform.position) * 2, ForceMode.Impulse);
+        FindObjectOfType<AudioManager>().Play("Hit");
+        Invoke("FinishedCharge", 1);
+    }
+
+    void FinishedCharge()
+    {
+        navAI.enabled = true;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
 }

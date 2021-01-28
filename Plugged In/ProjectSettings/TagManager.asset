@@ -13,6 +13,8 @@ TagManager:
   - SpeedPowerup
   - FlashbangPowerup
   - Boss
+  - ChargeEnemy
+  - DamagePowerup
   layers:
   - Default
   - TransparentFX

@@ -9,9 +9,17 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+    }
     public void QuitGame()
     {
         Debug.Log("You have quit the game");
         Application.Quit();
+    }
+    public void BackButton()
+    {
+       SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }

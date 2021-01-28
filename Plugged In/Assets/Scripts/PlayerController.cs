@@ -7,34 +7,41 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    //speed variables
     public float speed;
+    //speed powerup variables
     float superSpeed;
     bool speedPowerUp = false;
 
     float posMaxSpeed = 10;
     float negMaxSpeed = -10;
-
+    //damage powerup variables
+    //movement variables
     private Rigidbody rb;
 
     float movementX;
     float movementY;
-
-    public float bulletSpeed;
+    
+    //health and damage variables
     public float playerHealth = 100;
     public float curHealth;
 
-    public float myDamage = 10;
-
+    public static float myDamage = 25;
+    
+    //bullet variables
     public GameObject bullet;
+    public float bulletSpeed;
     public Transform firePoint1;
     public Transform firePoint2;
 
     float fireTimer = 1;
     public float fireTimerReset = 0.5f;
 
+    //UI variables
     public Text healthText;
     public Slider healthSlider;
 
+    //grounded variable
     public bool isGrounded = true;
 
     // called first
@@ -69,6 +76,7 @@ public class PlayerController : MonoBehaviour
         healthSlider.value = curHealth;
         DontDestroyOnLoad(this.gameObject);
     }
+    //movement code
     void OnMove(InputValue inputValue)
     {
         Vector2 movementVector = inputValue.Get<Vector2>();
@@ -86,6 +94,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //checks to see if the player has a speed up effect from the powerup
         Vector3 movement = new Vector3(movementX, 0, movementY);
 
         if (speedPowerUp == false)
@@ -98,7 +107,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Debug.Log(rb.velocity);
-
+        //more movement code, makes sure player can't go below negMaxSpeed or above posMaxSpeed
         if (rb.velocity.x > posMaxSpeed)
         {
             rb.velocity = new Vector3(10, rb.velocity.y, rb.velocity.z);
@@ -119,6 +128,7 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
 
+    //firing code, instantiates bullet into firepoints
     void OnFire(InputValue input)
     {
         if (fireTimer <= 0)
@@ -134,14 +144,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //jump code, when pressing "space" it fires the player into the air
     void OnJump(InputValue input)
     {
         SceneManager.LoadScene("BossScene", LoadSceneMode.Single);
-        //rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+        /*rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
         FindObjectOfType<AudioManager>().Play("Jump");
-        //isGrounded = false;
-        //Debug.Log("Jump!!!");
+        isGrounded = false;
+        Debug.Log("Jump!!!");*/
     }
+
+    //damage code, takes health from the player if they collide with an enemy
     void TakeDamage(float damageTaken)
     {
         curHealth -= damageTaken;
@@ -153,21 +166,22 @@ public class PlayerController : MonoBehaviour
             Application.Quit();
         }
     }
-    private void OnCollisionEnter(Collision colllision)
+    //collision code, registers when damage taken from enemy and registers when damage is given to enemy by player 
+    private void OnCollisionEnter(Collision collision)
     {
-        if (colllision.transform.tag == "Enemy")
+        if (collision.transform.tag == "Enemy")
         {
             TakeDamage(10);
             print("You are taking damage!!");
         }
-        if (colllision.transform.tag == "EnemyBullet")
+        if (collision.transform.tag == "EnemyBullet")
         {
             TakeDamage(10);
             print("You are taking damage!!");
-            Destroy(colllision.gameObject);
+            Destroy(collision.gameObject);
         }
     }
-
+    //more collision code, registers when the player runs into speedpowerup and then activates speedboost
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "SpeedPowerup")
@@ -180,7 +194,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-
+    //normal speed of the player is restored through this method once it has been called
     void NormalSpeed()
     {
         speedPowerUp = false;

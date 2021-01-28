@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     int counter = 0;
     float numberOfEnemies = 3;
 
+    //enemies spawn when game level starts
     void Start()
     {
         SpawnWave();
@@ -36,7 +37,7 @@ public class WaveManager : MonoBehaviour
             else
             {
                 print("You win, NICE!");
-                SceneManager.LoadScene("BossFight", LoadSceneMode.Single);
+                SceneManager.LoadScene("BossScene", LoadSceneMode.Single);
             }
         }
         //if (Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -45,6 +46,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    //this instantiates enemies to their spawnpoints, every wave spawns an extra 2 enemies
     void SpawnWave()
     {
         if(waveNumber <= 4)

@@ -1611,7 +1611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9680446b24f3f438ca9772a03a8f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 50
+  enemyHealth: 75
   damage: 0
   player: {fileID: 0}
   enemySpeed: 0.1
@@ -1622,6 +1622,9 @@ MonoBehaviour:
   bulletSpeed: 100
   powerup:
   - {fileID: 419401784385817385, guid: 48186bce86a175644a07a42360340a64, type: 3}
+  - {fileID: 3967066742008447504, guid: 502a4073ba53283478663214027735a9, type: 3}
+  runAway: 1
+  enemyCharge: 0
 --- !u!54 &3295255534757956704
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 74af805fa16b14c45b10949d4facc449
   - enabled: 1
     path: Assets/Scenes/WaveScene.unity
@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossScene.unity
     guid: 7c6b0c6abb009d241a42813351b46090
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 8b3953e55a5d9a94fa4d5e47db3ed97a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d59befa771d97504d871cd99a823695f, type: 2}
